@@ -15,10 +15,24 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
     <title>Truck Hunt</title>
-</head>
+    <link rel="stylesheet" href="http://js.arcgis.com/3.12/esri/css/esri.css">
+    
+    <script src="http://js.arcgis.com/3.12/"></script>
+    <script>
+      var map;
 
+      require(["esri/map", "dojo/domReady!"], function(Map) {
+        map = new Map("map", {
+          basemap: "topo",
+          center: [-122.45, 37.75], // longitude, latitude
+          zoom: 13
+        });
+      });
+    </script>
+</head>
 <body class="clearfix" ng-app="angularRestfulAuth">
     <header>
+
         <div class="navbar navbar-inverse navbar-fixed-top" role="navigation" data-ng-controller="AuthCtrl">
             <div class="container">
                 <div class="navbar-header">
@@ -30,6 +44,7 @@
                     </button>
                     <a class="navbar-brand" href="#">TruckHunt</a>
                 </div>
+
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
                         <li><a ng-href="#/">Home</a></li>
@@ -38,7 +53,8 @@
                         <li><a ng-href="#/signin">Signin</a></li>
                         <li><a ng-href="#/signup">Signup</a></li>
                         <li><a ng-click="logout()">Logout</a></li>
-                    </ul>
+                    </ul> 
+                    <div id="map"></div>
                 </div><!--/.nav-collapse -->
             </div>
         </div>
